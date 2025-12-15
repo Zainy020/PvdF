@@ -7,22 +7,90 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
-    body { margin:0; font-family:'Inter', sans-serif; background:#f4f4f4; color:#222; }
-    header, footer { background: linear-gradient(90deg, #b71c1c, #1b5e20); color:white; padding:1rem; }
-    header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-    nav button { background: rgba(255,255,255,0.15); border:none; color:white; margin:0.25rem; padding:0.5rem 1rem; border-radius:20px; cursor:pointer; transition: background 0.3s; }
-    nav button:hover { background: rgba(255,255,255,0.35); }
-    main { padding:1.5rem; max-width:1100px; margin:auto; }
-    .page { display:none; }
-    .page.active { display:block; }
-    .card { background:white; padding:1.25rem; margin-bottom:1rem; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
-    .notice { background:#fff3cd; border-left:6px solid #ff9800; padding:1rem; border-radius:8px; margin:1rem 0; font-weight:500; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem; }
-    input, textarea { width:100%; padding:0.6rem; margin:0.4rem 0; border-radius:6px; border:1px solid #ccc; font-family:inherit; }
-    footer { text-align:center; margin-top:2rem; }
-    button { background: #1b5e20; color: white; border:none; padding:0.6rem 1.2rem; margin:0.3rem 0; border-radius:12px; cursor:pointer; font-weight:600; transition: all 0.3s; }
-    button:hover { background: #43a047; transform: scale(1.05); }
-    @media (max-width:600px) { header { flex-direction:column; } }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f4f4f4;
+      color: #222;
+    }
+
+    header, footer {
+      background: linear-gradient(90deg, #b71c1c, #1b5e20);
+      color: white;
+      padding: 1rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      margin: 0.25rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    nav button:hover {
+      background: rgba(255,255,255,0.35);
+    }
+
+    main {
+      padding: 1.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .card {
+      background: white;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .notice {
+      background: #fff3cd;
+      border-left: 6px solid #ff9800;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-weight: 500;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.4rem 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
@@ -36,8 +104,7 @@
     <button onclick="showPage('aanmelden')">Aanmelden voor PvdF</button>
     <button onclick="showPage('stemmen')">Stemmen</button>
     <button onclick="showPage('contact')">Contact</button>
-    <button onclick="showPage('verkiezingen')">Aankomende verkiezingen</button>
-    <button onclick="showPage('account')">Account</button>
+    <button onclick="showPage('verkiezingen')">aankomende verkiezingen</button>
   </nav>
 </header>
 
@@ -48,7 +115,7 @@
       <h1>Welkom bij de Partij voor de Fufu</h1>
       <p>De Partij voor de Fufu (PvdF) is een progressieve politieke beweging, gebaseerd in Amsterdam.</p>
       <p>Wij staan voor inspraak, vernieuwing en een frisse blik op politiek.</p>
-      <p>Wij zijn gebaseerd op D66, een centrum-linkse sociaal progressieve partij.</p>
+      <p>Wij zijn gebasseerd op D66, een centrum linkse sociaal progessieve partij</p>
     </div>
   </section>
 
@@ -56,18 +123,38 @@
   <section id="breaking" class="page">
     <h1>Breaking Fufu News</h1>
     <div class="grid">
-      <div class="card"><h3>Formatiegesprekken gestart</h3><p>De PvdF is begonnen met gesprekken over samenwerking.</p></div>
-      <div class="card"><h3>Nieuwe leden welkom</h3><p>Onze beweging groeit elke dag verder.</p></div>
-      <div class="card"><h3>Centrum links, wat is dat?</h3><p>Niet extreem links, niet rechts maar beetje links. Meer links dan rechts.</p></div>
-      <div class="card"><h3>TikTok</h3><p>Nieuwe tiktoks!!</p></div>
+      <div class="card">
+        <h3>Formatiegesprekken gestart</h3>
+        <p>De PvdF is begonnen met gesprekken over samenwerking.</p>
+      </div>
+      <div class="card">
+        <h3>Nieuwe leden welkom</h3>
+        <p>Onze beweging groeit elke dag verder.</p>
+      </div>
+       <div class="card">
+        <h3>centrum links, wat is dat?</h3>
+        <p>niet extreem links, niet rechts maar beetje links. meer links dan rechts.</p>
+      </div>
+       <div class="card">
+        <h3>tiktok</h3>
+        <p>nieuwe tiktoks!!</p>
+      </div>
     </div>
   </section>
 
   <!-- LEDEN -->
   <section id="leden" class="page">
     <h1>Onze Leden</h1>
-    <p><strong>Aantal leden van de PvdF:</strong> <span id="ledenAantal">0</span></p>
-    <div class="grid" id="ledenGrid"></div>
+    <p><strong>Aantal leden van de PvdF:</strong>5</p>
+    <div class="grid">
+      <div class="card">de lijstrekker: zainy</div>
+      <div class="card">de 2e op de lijst: Sofia</div>
+      <div class="card">de 3e op de lijst: luisanny</div>
+      <div class="card">de 4e op de lijst: Nawal</div>
+      <div class="card">de 5e op de lijst: Mumtas</div>
+      <div class="card">de 6e op de lijst: Najma</div>
+      <div class="card">de 7e op de lijst: misschien wel jij! meld je binnekort aan</div>
+    </div>
   </section>
 
   <!-- AANMELDEN -->
@@ -82,13 +169,10 @@
   <!-- STEMMEN -->
   <section id="stemmen" class="page">
     <h1>Stemmen</h1>
-    <div class="card" id="stemInfo">Log in om te stemmen</div>
-    <div class="card" id="stemBox" style="display:none;">
-      <p><strong>Moet PvdF meedoen aan verkiezingen?</strong></p>
-      <button onclick="stem('JA')">JA</button>
-      <button onclick="stem('NEE')">NEE</button>
+    <div class="notice">BINNENKORT BIJ PvdF: Stemmen en resultaten bekijken</div>
+    <div class="card">
+      <p>Je moet ingelogd zijn om te kunnen stemmen.</p>
     </div>
-    <div class="card" id="resultaten"></div>
   </section>
 
   <!-- CONTACT -->
@@ -96,124 +180,35 @@
     <h1>Contact</h1>
     <div class="card">
       <p><strong>Email:</strong> pvdf@gmail.com</p>
-      <p><strong>TikTok:</strong> @partijvoordefufu</p>
+      <p><strong>TikTok:</strong> @partijvoordefufu</p/
     </div>
   </section>
-
-  <!-- VERKIEZINGEN -->
+</main>
+  <!-- verkiezingen -->
   <section id="verkiezingen" class="page">
-    <h1>Aankomende verkiezingen</h1>
+    <h1>aankomende verkiezingen</h1>
+    <p><strong>Aantal leden van de PvdF:</strong>5</p>
+    <h1>aankomende verkiezingen</h1>\
     <div class="grid">
       <div class="card">Gemeenteraadsverkiezingen: 18 maart 2026</div>
       <div class="card">Provinciale Statenverkiezingen: maart 2027</div>
       <div class="card">Eerste Kamerverkiezingen: mei 2027</div>
       <div class="card">Europese Parlementsverkiezingen: juni 2029</div>
-      <div class="card">Eerdere verkiezingen: niet voorspelbaar (bijv. 2e kamer valt)</div>
+      <div class="card">eerdere verkiezingen:niet voorspelbaar (bijb 2e kamer valt)</div>
     </div>
   </section>
-
-  <!-- ACCOUNT -->
-  <section id="account" class="page">
-    <div class="card">
-      <p id="status">Niet ingelogd</p>
-      <input id="email" placeholder="Email">
-      <input id="password" type="password" placeholder="Wachtwoord">
-      <button onclick="register()">Registreren</button>
-      <button onclick="login()">Inloggen</button>
-      <button onclick="logout()">Uitloggen</button>
-    </div>
-  </section>
-</main>
-
+  
 <footer>
   <p>Alle rechten voorbehouden – Partij voor de Fufu</p>
 </footer>
 
 <script>
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-</script>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, collection, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD3hTqbPTSmnQ9xXtKfOQVw7PlHBRAUW_o",
-  authDomain: "depvdf.firebaseapp.com",
-  projectId: "depvdf",
-  storageBucket: "depvdf.firebasestorage.app",
-  messagingSenderId: "129164673038",
-  appId: "1:129164673038:web:4e3338e959257200b1fc5f"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-const stemBox = document.getElementById("stemBox");
-const stemInfo = document.getElementById("stemInfo");
-
-// AUTH FUNCTIES
-window.register = () => createUserWithEmailAndPassword(auth,email.value,password.value).catch(e=>alert(e.message));
-window.login = () => signInWithEmailAndPassword(auth,email.value,password.value).catch(()=>alert("Foute login"));
-window.logout = () => signOut(auth);
-
-// LEDEN FUNCTIES
-async function updateLeden(){
-  const snap = await getDocs(collection(db,"members"));
-  document.getElementById("ledenAantal").innerText = snap.size;
-  const grid = document.getElementById("ledenGrid");
-  grid.innerHTML = "";
-  snap.forEach(doc=>{
-    const c=document.createElement("div");
-    c.className="card";
-    c.innerText=doc.data().email;
-    grid.appendChild(c);
-  });
-}
-
-// STEM FUNCTIES
-window.stem = async (keuze)=>{
-  const user = auth.currentUser;
-  if(!user){alert("Log eerst in om te stemmen"); return;}
-  const ref = doc(db,"votes",user.uid);
-  const snap = await getDoc(ref);
-  if(snap.exists()){alert("Je hebt al gestemd"); return;}
-  await setDoc(ref,{keuze,tijd:serverTimestamp()});
-  laadResultaten();
-};
-
-async function laadResultaten(){
-  const snap = await getDocs(collection(db,"votes"));
-  let ja=0, nee=0;
-  snap.forEach(doc=>doc.data().keuze==="JA"?ja++:nee++);
-  document.getElementById("resultaten").innerHTML=`
-    <strong>Resultaten:</strong><br>
-    JA: ${ja}<br>
-    NEE: ${nee}
-  `;
-}
-
-// LOGIN STATUS CHECK
-onAuthStateChanged(auth, async(user)=>{
-  if(user){
-    document.getElementById("status").innerText = 
-      `Welkom ${user.email}! Als lid kan je nu ook meebepalen in stemmingen.`;
-    const ref = doc(db,"members",user.uid);
-    const snap = await getDoc(ref);
-    if(!snap.exists()) await setDoc(ref,{email:user.email,joined:serverTimestamp()});
-  } else {
-    document.getElementById("status").innerText = "Niet ingelogd";
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(page => {
+      page.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
   }
-  stemBox.style.display=user?"block":"none";
-  stemInfo.style.display=user?"none":"block";
-  updateLeden();
-  laadResultaten();
-});
 </script>
 
 </body>
