@@ -20,6 +20,8 @@
     .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem; }
     input, textarea { width:100%; padding:0.6rem; margin:0.4rem 0; border-radius:6px; border:1px solid #ccc; font-family:inherit; }
     footer { text-align:center; margin-top:2rem; }
+    button { background: #1b5e20; color: white; border:none; padding:0.6rem 1.2rem; margin:0.3rem 0; border-radius:12px; cursor:pointer; font-weight:600; transition: all 0.3s; }
+    button:hover { background: #43a047; transform: scale(1.05); }
     @media (max-width:600px) { header { flex-direction:column; } }
   </style>
 </head>
@@ -65,9 +67,7 @@
   <section id="leden" class="page">
     <h1>Onze Leden</h1>
     <p><strong>Aantal leden van de PvdF:</strong> <span id="ledenAantal">0</span></p>
-    <div class="grid" id="ledenGrid">
-      <!-- Leden komen hier automatisch -->
-    </div>
+    <div class="grid" id="ledenGrid"></div>
   </section>
 
   <!-- AANMELDEN -->
@@ -130,13 +130,12 @@
 </footer>
 
 <script>
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 </script>
 
-<!-- FIREBASE + LEDEN + STEMMEN -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -155,19 +154,22 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const stemBox = document.getElementById("stemBox");
+const stemInfo = document.getElementById("stemInfo");
+
 // AUTH FUNCTIES
 window.register = () => createUserWithEmailAndPassword(auth,email.value,password.value).catch(e=>alert(e.message));
 window.login = () => signInWithEmailAndPassword(auth,email.value,password.value).catch(()=>alert("Foute login"));
 window.logout = () => signOut(auth);
 
 // LEDEN FUNCTIES
-async function updateLeden() {
+async function updateLeden(){
   const snap = await getDocs(collection(db,"members"));
   document.getElementById("ledenAantal").innerText = snap.size;
   const grid = document.getElementById("ledenGrid");
   grid.innerHTML = "";
   snap.forEach(doc=>{
-    const c = document.createElement("div");
+    const c=document.createElement("div");
     c.className="card";
     c.innerText=doc.data().email;
     grid.appendChild(c);
@@ -189,19 +191,26 @@ async function laadResultaten(){
   const snap = await getDocs(collection(db,"votes"));
   let ja=0, nee=0;
   snap.forEach(doc=>doc.data().keuze==="JA"?ja++:nee++);
-  document.getElementById("resultaten").innerHTML=`<strong>Resultaten:</strong><br>JA: ${ja}<br>NEE: ${nee}`;
+  document.getElementById("resultaten").innerHTML=`
+    <strong>Resultaten:</strong><br>
+    JA: ${ja}<br>
+    NEE: ${nee}
+  `;
 }
 
 // LOGIN STATUS CHECK
 onAuthStateChanged(auth, async(user)=>{
-  document.getElementById("status").innerText = user?`Ingelogd als ${user.email}`:"Niet ingelogd";
-  document.getElementById("stemBox").style.display=user?"block":"none";
-  document.getElementById("stemInfo").style.display=user?"none":"block";
   if(user){
+    document.getElementById("status").innerText = 
+      `Welkom ${user.email}! Als lid kan je nu ook meebepalen in stemmingen.`;
     const ref = doc(db,"members",user.uid);
     const snap = await getDoc(ref);
     if(!snap.exists()) await setDoc(ref,{email:user.email,joined:serverTimestamp()});
+  } else {
+    document.getElementById("status").innerText = "Niet ingelogd";
   }
+  stemBox.style.display=user?"block":"none";
+  stemInfo.style.display=user?"none":"block";
   updateLeden();
   laadResultaten();
 });
